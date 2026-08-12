@@ -1,0 +1,238 @@
+.detail-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 20px;
+}
+
+.loading-text {
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.detail-error {
+  text-align: center;
+  padding: 80px 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+}
+
+.detail-error h2 {
+  color: var(--danger-color);
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.detail-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: 44px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-gradient);
+}
+
+.detail-back {
+  margin-bottom: 28px;
+}
+
+.detail-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.detail-back-link:hover {
+  color: var(--accent-color);
+  background: var(--accent-bg);
+  transform: translateX(-4px);
+}
+
+.detail-header {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 36px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.detail-icon {
+  font-size: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  background: linear-gradient(135deg, var(--accent-bg), rgba(139, 92, 246, 0.08));
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-lg);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.detail-header-text {
+  flex: 1;
+}
+
+.detail-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin: 0 0 16px;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.detail-downloads {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--accent-bg), rgba(139, 92, 246, 0.12));
+  color: var(--accent-color);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 1px solid var(--accent-border);
+  box-shadow: var(--shadow-xs);
+}
+
+.detail-description {
+  margin-bottom: 40px;
+}
+
+.detail-description h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.detail-description p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 1rem;
+}
+
+.detail-actions {
+  margin-bottom: 32px;
+}
+
+.btn-download {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 18px 36px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+}
+
+.detail-file-info {
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: var(--bg-tertiary);
+  margin: 0 -44px -44px;
+  padding: 20px 44px;
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+.detail-file-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.detail-file-info code {
+  background: linear-gradient(135deg, var(--accent-bg), rgba(139, 92, 246, 0.12));
+  color: var(--accent-color);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  word-break: break-all;
+  border: 1px solid var(--accent-border);
+}
+
+@media (max-width: 640px) {
+  .detail-container {
+    padding: 32px 16px 48px;
+  }
+
+  .detail-card {
+    padding: 28px 20px;
+  }
+
+  .detail-file-info {
+    margin: 0 -20px -28px;
+    padding: 20px;
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  }
+
+  .detail-title {
+    font-size: 1.5rem;
+  }
+
+  .detail-header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .detail-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 2.2rem;
+    margin: 0 auto;
+  }
+
+  .detail-meta {
+    justify-content: center;
+  }
+
+  .detail-back-link:hover {
+    transform: none;
+  }
+}

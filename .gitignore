@@ -1,0 +1,21 @@
+# Backend
+backend/node_modules
+backend/.env
+backend/kacak-site.db
+backend/*.log
+
+# Frontend
+frontend/node_modules
+frontend/dist
+frontend/.env
+frontend/*.log
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
