@@ -12,11 +12,11 @@ r2_buckets = [
   { binding = "FILES", bucket_name = "kacak-site-files" }
 ]
 
-[env.staging]
-vars = { ENVIRONMENT = "staging" }
+[env.preview]
+vars = { ENVIRONMENT = "preview" }
 d1_databases = [
-  { binding = "DB", database_name = "kacak-site-db-staging", database_id = "" }
+  { binding = "DB", database_name = "kacak-site-db-preview", database_id = "" }
 ]
 r2_buckets = [
-  { binding = "FILES", bucket_name = "kacak-site-files-staging" }
+  { binding = "FILES", bucket_name = "kacak-site-files-preview" }
 ]
