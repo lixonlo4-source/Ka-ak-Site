@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import './AdminPanel.css';
 
 const AdminPanel = () => {
-  const { user, getAuthHeader } = useAuth();
+  const { user, apiFetch } = useAuth();
   const navigate = useNavigate();
   const [apps, setApps] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,11 +36,9 @@ const AdminPanel = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, navigate]);
 
-  const API = 'http://localhost:5000/api';
-
   const fetchApps = async () => {
     try {
-      const res = await fetch(`${API}/apps`, { headers: getAuthHeader() });
+      const res = await apiFetch('/apps');
       if (!res.ok) throw new Error('Uygulamalar yüklenemedi');
       const data = await res.json();
       setApps(data.filter((a) => a.uploader_id === user.id));
@@ -83,9 +81,8 @@ const AdminPanel = () => {
       fd.append('description', formData.description);
       fd.append('file', formData.file);
 
-      const res = await fetch(`${API}/apps`, {
+      const res = await apiFetch('/apps', {
         method: 'POST',
-        headers: { ...getAuthHeader() },
         body: fd,
       });
       const data = await res.json();
@@ -142,9 +139,8 @@ const AdminPanel = () => {
       fd.append('description', editData.description);
       if (editData.file) fd.append('file', editData.file);
 
-      const res = await fetch(`${API}/apps/${editApp.id}`, {
+      const res = await apiFetch(`/apps/${editApp.id}`, {
         method: 'PUT',
-        headers: { ...getAuthHeader() },
         body: fd,
       });
       const data = await res.json();
@@ -175,9 +171,8 @@ const AdminPanel = () => {
     setDeleteLoading(true);
     setError('');
     try {
-      const res = await fetch(`${API}/apps/${deleteTarget.id}`, {
+      const res = await apiFetch(`/apps/${deleteTarget.id}`, {
         method: 'DELETE',
-        headers: { ...getAuthHeader() },
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Silme başarısız');

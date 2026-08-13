@@ -1,0 +1,22 @@
+name = "kacak-site"
+pages_build_output_dir = "frontend/dist"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+d1_databases = [
+  { binding = "DB", database_name = "kacak-site-db", database_id = "" }
+]
+r2_buckets = [
+  { binding = "FILES", bucket_name = "kacak-site-files" }
+]
+
+[env.staging]
+vars = { ENVIRONMENT = "staging" }
+d1_databases = [
+  { binding = "DB", database_name = "kacak-site-db-staging", database_id = "" }
+]
+r2_buckets = [
+  { binding = "FILES", bucket_name = "kacak-site-files-staging" }
+]

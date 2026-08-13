@@ -6,7 +6,7 @@ import './AppDetail.css';
 const AppDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { getAuthHeader } = useAuth();
+  const { apiFetch } = useAuth();
   const [app, setApp] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,9 +19,7 @@ const AppDetail = () => {
 
   const fetchApp = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/apps/${id}`, {
-        headers: getAuthHeader(),
-      });
+      const res = await apiFetch(`/apps/${id}`);
       if (!res.ok) {
         if (res.status === 404) throw new Error('Uygulama bulunamadı');
         throw new Error('Uygulama yüklenemedi');
@@ -57,9 +55,7 @@ const AppDetail = () => {
     if (!app) return;
     setDownloading(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/apps/${id}/download`, {
-        headers: getAuthHeader(),
-      });
+      const res = await apiFetch(`/apps/${id}/download`);
       if (!res.ok) {
         const err = await res.json();
         throw new Error(err.message || 'İndirme başarısız');

@@ -7,7 +7,7 @@ const Home = () => {
   const [apps, setApps] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { getAuthHeader } = useAuth();
+  const { apiFetch } = useAuth();
 
   useEffect(() => {
     fetchApps();
@@ -15,9 +15,7 @@ const Home = () => {
 
   const fetchApps = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/apps', {
-        headers: getAuthHeader(),
-      });
+      const res = await apiFetch('/apps');
       if (!res.ok) throw new Error('Uygulamalar yüklenemedi');
       const data = await res.json();
       setApps(data);
